@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-function useCounter() {
+function useCounter(isForward = true) {
     const [counter, setCounter] = useState(0);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCounter((prevCounter) => prevCounter + 1);
+            setCounter((prevCounter) => isForward ? prevCounter + 1 : prevCounter - 1);
         }, 1000);
 
         return () => clearInterval(interval);
